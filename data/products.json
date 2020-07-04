@@ -1,0 +1,74 @@
+[
+  { 
+    "id": "8",
+    "name": "Apple GLW Smart Watch",
+    "category": "Fashion",
+    "price": 9500 ,
+    "rating": 3, 
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.ipsum dolor sit amet, consectetur adipisicing elit ipsum dolor sit amet, consectetur adipisicing elit ipsum dolor sit amet, consectetur adipisicing elit ipsum dolor sit amet, consectetur adipisicing elit ipsum dolor sit amet, consectetur adipisicing elit ipsum dolor sit amet, consectetur adipisicing elit ipsum dolor sit amet, consectetur adipisicing elit ipsum dolor sit amet, consectetur adipisicing elit",
+    "img": "/img/retina.jpg"
+  },
+  { 
+    "id": "7",
+    "name": "Samsung Galaxy S20 128GB ROM, 8GB RAM",
+    "category": "Mobile Phones",
+    "price": 95000 ,
+    "rating": 5, 
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "img": "/img/categories/gadget-repair.jpeg"
+  },
+  { 
+    "id": "6",
+    "name": "Toyota Camry 2003 Silver",
+    "category": "Vehicle",
+    "price": 720000 ,
+    "rating": 4, 
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "img": "/img/categories/childcare.jpeg"
+  },
+  { 
+    "id": "5",
+    "name": "40 Inches LED LG Television",
+    "category": "Electronics",
+    "price": 95000 ,
+    "rating": 2,
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "img": "/retina.jpg"
+  },
+  { 
+    "id": "4",
+    "name": "Apple MacBook 10 Pro 1TB SSD, 16GB RAM",
+    "category": "Laptop & PCs",
+    "price": 120000 ,
+    "rating": 4, 
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "img": "/img/categories/cleaning.jpeg"
+  },
+  { 
+    "id": "3",
+    "name": "Neatly Handmade Unisex Crochet Sweaters",
+    "category": "Fashion",
+    "price": 3000 ,
+    "rating": 3, 
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "img": "/img/categories/event.jpg"
+  },
+  { 
+    "id": "2",
+    "name": "4 Bedroom Duplex (En-suite), Ibeju-Lekki",
+    "category": "Real Estate",
+    "price": 102400 ,
+    "rating": 1, 
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "img": "/img/categories/barbers.jpg"
+  },
+  { 
+    "id": "1",
+    "name": "Multi-size Electric Rubber Vibrators & Dildos Pack",
+    "category": "Adult Services",
+    "price": 5000 ,
+    "rating": 5, 
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    "img": "/img/categories/business.jpeg"
+  }
+]
