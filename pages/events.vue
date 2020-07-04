@@ -62,7 +62,7 @@
 
       <div class="speakers my-5">
         <heading title="Our Speakers" />
-        <v-slide-group show-arrows="desktop" class="mb-10">
+        <v-slide-group show-arrows class="mb-10">
           <v-slide-item v-for="m in 10" :key="m">
             <v-img
               src="/img/ifeoma-kola.png"
