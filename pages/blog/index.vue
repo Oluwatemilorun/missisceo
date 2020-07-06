@@ -68,7 +68,7 @@
 export default {
   components: {
     Page: () => import('~/components/PageTitle'),
-    BlogPost: () => import('~/components/home/BlogPostCard'),
+    BlogPost: () => import('~/components/BlogPostCard'),
     heading: () => import('~/components/heading')
   },
   data() {

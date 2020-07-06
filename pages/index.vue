@@ -51,7 +51,7 @@
 <script>
 export default {
   components: {
-    BlogPost: () => import('~/components/home/BlogPostCard')
+    BlogPost: () => import('~/components/BlogPostCard')
   },
   data() {
     return {

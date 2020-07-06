@@ -58,7 +58,7 @@
             v-for="i in 12" :key="i"
           >
             <v-img
-              src="/img/products/makeup-pencil.png"
+              src="/img/makeup-pencil.png"
               class="d-flex align-end pa-3"
             >
               <v-sheet tile color="rgba(255,255,255,0.8)" class="pa-2 text-center">

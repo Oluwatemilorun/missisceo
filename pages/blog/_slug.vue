@@ -125,7 +125,7 @@
                       <v-avatar
                         size="85"
                       >
-                        <img src="/img/products/hair-dryer.jpg" alt="person" />
+                        <img src="/img/hair-dryer.jpg" alt="person" />
                       </v-avatar>
                     </v-col>
                     <v-col cols="9" sm="8" md="9" lg="10">
@@ -167,8 +167,8 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     heading: () => import('~/components/heading'),
-    sidebar: () => import('~/components/post/sidebar'),
-    replyBox: () => import('~/components/post/replybox')
+    sidebar: () => import('~/components/blog/sidebar'),
+    replyBox: () => import('~/components/blog/replybox')
   },
   data() {
     return {

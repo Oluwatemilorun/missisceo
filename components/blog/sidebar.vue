@@ -30,14 +30,14 @@
       <v-sheet
         color="grey lighten-3"
         class="my-5"
-        height="600"
+        :height="height"
         width="100%"
         tile
-        v-for="i in 2" :key="i"
+        v-for="(height, i) in heights" :key="i"
       >
         <v-row align="center" justify="center" class="fill-height">
           <h1 class="font-weight-thin text--secondary text-center">
-            ADS 600 x {{ i }}
+            ADS {{ height }}
           </h1>
         </v-row>
       </v-sheet>
@@ -59,6 +59,12 @@ export default {
         'Marriage',
         'Faith',
         'Video'
+      ],
+      heights: [
+        400,
+        600,
+        350,
+        600
       ]
     }
   }
