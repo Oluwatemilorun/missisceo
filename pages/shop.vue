@@ -2,7 +2,7 @@
   <div id="shop">
     <v-carousel
       cycle
-      height="300"
+      height="400"
       hide-delimiter-background
       show-arrows-on-hover
       delimiter-icon="mdi-minus"
@@ -13,28 +13,26 @@
         :key="n"
       >
         <v-sheet
-          color="grey darken-4"
-          height="300"
+          color="grey lighten-3"
+          height="450"
         >
           <v-img 
-            src="/img/snowcup.jpg"
+            src="/img/black_soap.png"
             height="100%"
-            class="px-10"
+            class="px-10 pt-10"
           >
             <v-row 
-              align="center"
-              justify="end" 
-              class="fill-height"
+              justify="end"
             >
-              <v-col cols="12" sm="6">
-                <div class="text-capitalize" style="font-size: 42px">
+              <v-col cols="12" sm="6" class="mt-md-10 py-10">
+                <h1 class="text-capitalize" style="font-size: 36px">
                   {{ slide }} choice van haff pink <br>
-                </div>
-                <div>
+                </h1>
+                <h4 class="font-weight-thin">
                   Nam libero tempore, cum soluta nobis est eligendi optio cumque 
                   nihil impedit quo minus id quod maxime placeat facere possimus, 
                   omnis voluptas assumenda est
-                </div>
+                </h4>
               </v-col>
             </v-row>
             <template v-slot:placeholder>
@@ -49,23 +47,24 @@
     </v-carousel>
 
     <!-- Latest Products-->
-    <heading title="Now in stock"/>
+    <heading title="Our best-sellings"/>
     <v-sheet class="mb-5">
       <v-container>
         <v-row justify="center" align="center">
           <v-col 
-            cols="12" sm="6" md="4" lg="3" 
-            v-for="i in 12" :key="i"
+            cols="10" sm="6" md="4" 
+            v-for="(img, i) in products" :key="i"
           >
             <v-img
-              src="/img/makeup-pencil.png"
+              :src="`/img/${img}.png`"
               class="d-flex align-end pa-3"
+              height="350"
             >
               <v-sheet tile color="rgba(255,255,255,0.8)" class="pa-2 text-center">
                 <h3 class="text-capitalize text-center">
-                  Product {{ i }}
+                  Product {{ i + 1 }}
                 </h3>
-                <div>N 2500</div>
+                <h4>&#8358;2500</h4>
               </v-sheet>
             </v-img>
           </v-col>
@@ -74,8 +73,9 @@
           :length="page.length" 
           v-model="page.num"
           total-visible="7"
-          dark
-          class="my-7"
+          circle
+          class="my-7 pagination py-2"
+          color="primary--text" 
         >
         </v-pagination>
       </v-container>
@@ -97,6 +97,20 @@ export default {
         'Third',
         'Fourth',
         'Fifth'
+      ],
+      products: [
+        'makeup-1',
+        'makeup-2',
+        'makeup-3',
+        'makeup-4',
+        'makeup-5',
+        'makeup-6',
+        'makeup-1',
+        'makeup-2',
+        'makeup-3',
+        'makeup-4',
+        'makeup-5',
+        'makeup-6'
       ]
     }
   },

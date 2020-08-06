@@ -3,9 +3,8 @@
     <!-- Page Header -->
     <Page title="About Me" />
 
-    <v-sheet class="my-2">
+    <v-sheet class="mb-2">
       <v-container>
-        <heading title="Who is Ifeoma Kola?" />
         <v-row justify="center">
           <v-col cols="12" sm="6">
             <v-img src="/img/ifeoma-kola.png" alt="Ifeoma_Kola" max-height="550">
@@ -50,9 +49,15 @@
           </v-col>
         </v-row>
 
-        <heading title="How it started" />
+        <h2 class="text-center big-text mt-7 mb-3">Stay Hydrated</h2>
         <p>
           Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
+          quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
+          quo voluptas nulla pariatur. Lorem ipsum dolor sit amet, consectetur 
+          adipisicing elit. Est blanditiis dolorem culpa incidunt minus 
+          dignissimos deserunt repellat aperiam quasi sunt officia expedita 
+          beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere 
+          nemo. Quis autem vel eum iure reprehenderit qui in ea voluptate velit 
           quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
           quo voluptas nulla pariatur. Lorem ipsum dolor sit amet, consectetur 
           adipisicing elit. Est blanditiis dolorem culpa incidunt minus 
@@ -61,7 +66,7 @@
           nemo.
         </p>
 
-        <heading title="Going Forward" />
+        <h2 class="text-center big-text mt-7 mb-3">Let Baby Lead</h2>
         <p>
           Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
           quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
@@ -69,12 +74,33 @@
           adipisicing elit. Est blanditiis dolorem culpa incidunt minus 
           dignissimos deserunt repellat aperiam quasi sunt officia expedita 
           beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere 
-          nemo.
+          nemo. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt 
+          repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores 
+          repudiandae, nostrum, reiciendis facere nemo.
         </p>
 
+        <h2 class="text-center big-text mt-7 mb-3">Get Comfortable</h2>
+        <p>
+          Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
+          quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
+          quo voluptas nulla pariatur. Lorem ipsum dolor sit amet, consectetur 
+          adipisicing elit. Est blanditiis dolorem culpa incidunt minus 
+          dignissimos deserunt repellat aperiam quasi sunt officia expedita 
+          beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere 
+          nemo. Quis autem vel eum iure reprehenderit qui in ea voluptate velit 
+          quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
+          quo voluptas nulla pariatur. Lorem ipsum dolor sit amet, consectetur 
+          adipisicing elit. Est blanditiis dolorem culpa incidunt minus 
+          dignissimos deserunt repellat aperiam quasi sunt officia expedita 
+          beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere 
+          nemo.
+        </p>
       </v-container>
     </v-sheet>
 
+    <!-- Gallery -->
+    <Gallery />
+    
   </div>
 </template>
 
@@ -82,7 +108,7 @@
 export default {
   components: {
     Page: () => import('~/components/PageTitle'),
-    heading: () => import('~/components/heading')
+    Gallery: () => import('~/components/Gallery')
   },
   head() {
     return {
@@ -93,5 +119,8 @@ export default {
 </script>
 
 <style>
-
+h2.big-text {
+  font-size: 30px;
+  font-weight: 400;
+}
 </style>

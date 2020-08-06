@@ -11,27 +11,35 @@ export const state = () => ({
       href: '/about',
     },
     {
-      text: 'Events & Speakers',
-      href: '/events',
-    },
-    {
       text: 'Blog',
       href: '/blog',
     },
     {
-      text: 'Beauty Shop',
+      text: 'Bee-Beauty Shop',
       href: '/shop',
     },
     {
       text: 'Contact',
       href: '/contact',
     }
+  ],
+  categories: [
+    'Life',
+    'Business',
+    'Marriage',
+    'Faith',
+    'Beauty',
+    'Motherhood',
+    'Video',
   ]
 });
 
 export const getters = {
   links: state => {
     return state.links
+  },
+  categories: state => {
+    return state.categories
   },
   articles: state => {
     for (const article of state.articles){

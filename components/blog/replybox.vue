@@ -30,7 +30,7 @@
       <v-col cols="12">
         <v-textarea
           box 
-          label="Reply" 
+          label="Comment" 
           v-model="inquiry"
           :rules="[rules.required]"
           outlined

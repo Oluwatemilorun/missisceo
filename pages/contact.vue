@@ -70,7 +70,7 @@
                       @click="snackbar=!snackbar"
                       :disabled="!formIsValid"
                     >
-                      Send Inquiry
+                      Submit
                     </v-btn>
                   </v-col>
                 </v-row>
@@ -81,13 +81,17 @@
       </v-container>
     </v-sheet>
 
+    <!-- Gallery -->
+    <Gallery />
+    
   </div>
 </template>
 
 <script>
 export default {
   components: {
-    Page: () => import('~/components/PageTitle')
+    Page: () => import('~/components/PageTitle'),
+    Gallery: () => import('~/components/Gallery')
   },
   data() {
     return {
