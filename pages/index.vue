@@ -20,13 +20,14 @@
         >
            <div>
             <v-sheet 
-              class="pillar-box ma-10 mt-0 pl-10 ml-lg-1" 
+              class="pillar-box ma-10 mt-0 pl-10 ml-lg-1"
+              tile 
             >
               <v-sheet 
                 class="img-box"
                 tile
               >
-                <v-card height="100%" color="transparent" flat :to="`blog/${blogpost.slug}`">
+                <v-card height="100%" color="transparent" tile flat :to="`blog/${blogpost.slug}`">
                   <v-img :src="blogpost.hero" width="100%" height="100%" class="py-5">
                     <span color="grey lighten-2" class="date mx-0 pa-2">
                       {{ blogpost.date }}
@@ -50,7 +51,7 @@
                   </p>
                   <!-- desktop -->
                   <p class="post-text my-3 hidden-sm-and-down">
-                    {{ blogpost.body.slice(0,400) }}[<b class="primary--text">...</b>]
+                    {{ blogpost.body.slice(0,500) }}[<b class="primary--text">...</b>]
                   </p> 
                   <p class="post-actions my-2 my-sm-5">
                     <v-btn 
@@ -59,6 +60,16 @@
                       depressed
                       dark
                       :to="`/blog/${blogpost.slug}`"
+                      class="hidden-md-and-up"
+                    >
+                      Read More
+                    </v-btn>
+                    <v-btn 
+                      color="primary"  
+                      depressed
+                      dark
+                      :to="`/blog/${blogpost.slug}`"
+                      class="hidden-sm-and-down"
                     >
                       Read More
                     </v-btn>
@@ -229,7 +240,7 @@ div.articles .full-box:nth-child(even) {
     background-color: goldenrod;
   }
   .post-box {
-    width: 350px;
+    width: 400px;
     height: 450px;
   }
   .img-box {
@@ -239,7 +250,7 @@ div.articles .full-box:nth-child(even) {
   }
   
   h1.post-title {
-    font-size: 22px;
+    font-size: 24px;
   }
   
   .full-box {
@@ -261,7 +272,7 @@ div.articles .full-box:nth-child(even) {
     right: 275%;
   }
   div.articles .full-box:nth-child(even) {
-    padding-left: 800px;
+    padding-left: 900px;
   }
   div.articles .full-box:nth-child(odd) {
     padding-right: 325px;

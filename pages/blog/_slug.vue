@@ -178,6 +178,10 @@ export default {
     article() {
       return this.articles.find(el => el.slug === this.slug)
     },
+    //newBP(){
+      //let item = {...this.article}
+      //return item
+    //},
     prevArticle() {
       const n = this.articles.indexOf(this.article);
       const prev = this.articles.find(el => this.articles.indexOf(el) + 1 === n);
@@ -206,10 +210,6 @@ export default {
 </script>
 
 <style scoped>
-.post-details {
-  font-size: 12px;
-  text-transform: uppercase;
-}
 .post-text>p:nth-child(1)::first-letter {
   font-size: 28px;
   margin: 1px;

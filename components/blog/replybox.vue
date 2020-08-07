@@ -29,7 +29,6 @@
       </v-col>
       <v-col cols="12">
         <v-textarea
-          box 
           label="Comment" 
           v-model="inquiry"
           :rules="[rules.required]"

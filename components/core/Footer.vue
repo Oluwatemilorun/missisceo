@@ -1,7 +1,7 @@
 <template>
   <v-footer dark padless id="footer">
     <v-sheet color="rgb(51,64,89)" flat width="100%" tile class=" mt-0">
-      <v-container>
+      <v-container class="pb-0">
         <v-row justify="center">
           <v-col cols="12" sm="10" md="6">
             <span 
@@ -9,49 +9,49 @@
               class="tertiary--text pa-5"
               style="cursor: pointer"
             >
-              <h1 class="font-weight-bold d-inline logo text-uppercase">
+              <h2 class="d-inline logo text-uppercase">
                 Missisceo
-              </h1>
+              </h2>
             </span>
             <div class="mx-1">
-              <v-list color="transparent" class="tertiary--text" flat dense>
+              <v-list color="transparent" class="tertiary--text" flat>
                 <v-list-item 
                   v-for="(link, n) in links.slice(1,)" 
                   :key="n"
                   :to="link.href"
-                  class="text-uppercase" 
+                  class="text-capitalize py-1 my-1" 
                 >
-                  <v-list-item-title>{{ link.text }}</v-list-item-title>
+                  {{ link.text }}
                 </v-list-item>
                 <v-list-item 
                   v-for="(category, g) in categories" 
                   :key="g"
-                  class="text-uppercase"
+                  class="text-capitalize py-1 my-1"
                   link 
                 >
-                  <v-list-item-title>{{ category }}</v-list-item-title>
+                  {{ category }}
                 </v-list-item>
               </v-list>
             </div>
           </v-col>
           <v-col cols="12" sm="10" md="6" class="my-0 py-0">
             <v-row>
-              <v-col cols="12" class="pa-5">
-                <h2 class="text-uppercase font-weight-medium">
+              <v-col cols="12" class="pa-5 pb-0">
+                <h3 class="text-uppercase font-weight-medium">
                   Subscribe to my newsletter to get outfit inspiration and 
                   beauty tips!
-                </h2>
+                </h3>
               </v-col>
               <v-col cols="12" class="px-5">
                 <v-row>
-                  <v-col cols="7">
+                  <v-col cols="8" sm="7" md="8" xl="7">
                     <v-text-field
                       outlined
                       dense
                       placeholder="Email Address"
                     ></v-text-field>
                   </v-col>
-                  <v-col cols="5">
+                  <v-col cols="4" sm="5" md="4" xl="5">
                     <v-btn light depressed class="py-5" color="grey lighten-3">
                       Submit
                     </v-btn>
@@ -117,11 +117,9 @@ export default {
 </script>
 
 <style scoped>
-h1.logo {
-  font-size: 36px;
-}
 #footer .v-list .v-list-item {
   display: inline-block;
-  
+  min-height: 18px;
+  font-size: 15px;
 }
 </style>

@@ -105,7 +105,7 @@
       <v-container>
         <v-row justify="center" align="center">
           <v-col 
-            cols="9" sm="6" md="4" 
+            cols="6" sm="6" md="4" 
             v-for="(item, i) in articles" :key="i"
           >
             <v-card elevation="0">
@@ -113,11 +113,11 @@
                 <v-img
                   :src="item.hero"
                   class="d-flex align-end"
-                  height="350"
+                  height="300"
                   
                 >
                   <v-sheet tile color="rgba(255,255,255,0.8)" class="pa-2">
-                    <h3 class="text-capitalize text-center my-5">
+                    <h3 style="font-size:18px" class="text-capitalize text-center my-2">
                       {{ item.title }} 
                     </h3>
                   </v-sheet>
