@@ -9,17 +9,20 @@
 </template>
 
 <script>
+import Header from "~/components/core/Header";
+import Footer from "~/components/core/Footer";
+
 export default {
   components: {
-    Header: () => import('~/components/core/Header'),
-    Footer: () => import('~/components/core/Footer')
+    Header,
+    Footer
   }
 }
 </script>
 
 <style>
 body, .v-application, #app, .app {
-  font-family: 'Lato', sans-serif
+  font-family: 'Poppins', sans-serif
 }
 
 h1, h2, h3, h4, h5, h6, .caption, .headline{

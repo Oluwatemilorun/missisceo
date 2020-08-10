@@ -110,7 +110,7 @@ export default {
       return this.$store.getters.links;
     },
     categories() {
-      return this.$store.getters.categories;
+      return this.$store.getters['category/categories'];
     }
   }
 };

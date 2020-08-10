@@ -10,7 +10,7 @@ export default {
   mode: 'universal',
   head: {
     titleTemplate: '%s - MissisCEO',
-    title: 'My Nuxtjs Blog',
+    title: 'Welcome to MissisCEO',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -20,20 +20,20 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { 
         rel: 'stylesheet', 
-        href: 'https://fonts.googleapis.com/css2?family=Gotu&family=Roboto&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=Gotu&family=Poppins&display=swap'
       },
     ]
   },
-  loading: { color: '#fff' },
+  loading: { color: '#fa4589' },
   css: [],
   plugins: [],
   buildModules: ['@nuxtjs/vuetify'],
   modules: ['@nuxtjs/pwa'],
   vuetify: {
     customVariables: ['~/assets/styles/variables.scss'],
-    optionsPath: '~/plugins/veutify.config.js'
+    optionsPath: '~/plugins/vuetify.config.js'
   },
-  // Generate product page
+  // Generate single blog post page
   generate: {
     routes: dynamicRoutes
   },

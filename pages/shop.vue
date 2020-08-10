@@ -8,22 +8,14 @@
       delimiter-icon="mdi-minus"
       class="mb-5"
     >
-      <v-carousel-item
-        v-for="(slide, n) in slides" 
-        :key="n"
-      >
-        <v-sheet
-          color="grey lighten-3"
-          height="450"
-        >
+      <v-carousel-item v-for="(slide, n) in slides" :key="n">
+        <v-sheet color="grey lighten-3" height="450">
           <v-img 
             src="/img/black_soap.png"
             height="100%"
             class="px-10 pt-10"
           >
-            <v-row 
-              justify="end"
-            >
+            <v-row justify="end">
               <v-col cols="12" sm="6" class="mt-md-10 py-10">
                 <h1 class="text-capitalize" style="font-size: 36px">
                   {{ slide }} choice van haff pink <br>
@@ -47,29 +39,32 @@
     </v-carousel>
 
     <!-- Latest Products-->
-    <heading title="Our bestsellers"/>
+    <Heading title="our bestsellers"/>
     <v-sheet class="mb-5">
       <v-container>
         <v-row justify="center" align="center">
           <v-col 
             cols="6" sm="6" md="4" 
-            v-for="(img, i) in products" :key="i"
+            v-for="(product, p) in products" 
+            :key="p"
           >
-            <v-dialog
-              v-model="dialog[i]"
-            >
+            <v-dialog v-model="dialog[p]">
               <template v-slot:activator="{on}">
                 <v-card flat tile link v-on="on">
                   <v-img
-                    :src="`/img/${img}.png`"
+                    :src="product.img"
                     class="d-flex align-end pa-3"
                     height="300"
                   >
-                    <v-sheet tile color="rgba(255,255,255,0.8)" class="pa-2 text-center">
+                    <v-sheet 
+                      tile 
+                      color="rgba(255,255,255,0.8)" 
+                      class="pa-2 text-center"
+                    >
                       <h3 class="text-capitalize text-center">
-                        Product {{ i + 1 }}
+                        {{ product.name }}
                       </h3>
-                      <h4>N2500</h4>
+                      <h4> N{{ product.price }} </h4>
                     </v-sheet>
                   </v-img>
                 </v-card>
@@ -90,7 +85,7 @@
                         </v-col>
                         <v-col cols="10" class="py-0">
                           <v-card height="400" flat tile>
-                            <v-img :src="`/img/${img}.png`" height="100%"/>
+                            <v-img :src="product.img" height="100%"/>
                           </v-card>
                           <div class="ma-5">
                             <v-icon large class="mr-3" color="accent darken-1">
@@ -119,9 +114,9 @@
                       </p>
                       <heading title="Related products"/>
                       <v-row>
-                        <v-col cols="6" sm="4" v-for="(pic,u) in products.slice(2,7)" :key="u">
+                        <v-col cols="6" sm="4" v-for="(prod, d) in products.slice(2,7)" :key="d">
                           <v-img
-                            :src="`/img/${pic}.png`"
+                            :src="prod.img"
                             class="d-flex align-end pa-3"
                             height="200"
                           >
@@ -136,8 +131,8 @@
           </v-col>
         </v-row>
         <v-pagination 
-          :length="page.length" 
-          v-model="page.num"
+          :length="10" 
+          :value="1"
           total-visible="7"
           circle
           class="my-7 pagination py-2"
@@ -150,35 +145,27 @@
 </template>
 
 <script>
+import Heading from "~/components/Heading";
+
 export default {
   components: {
-    heading: () => import('~/components/heading')
+    Heading
   },
   data() {
     return {
       dialog: [],
-      page: { num: 1, length: 10 },
       slides: [
         'First',
         'Second',
         'Third',
         'Fourth',
         'Fifth'
-      ],
-      products: [
-        'makeup-1',
-        'makeup-2',
-        'makeup-3',
-        'makeup-4',
-        'makeup-5',
-        'makeup-6',
-        'makeup-1',
-        'makeup-2',
-        'makeup-3',
-        'makeup-4',
-        'makeup-5',
-        'makeup-6'
       ]
+    }
+  },
+  computed: {
+    products() {
+      return this.$store.getters['product/products'];
     }
   },
   head() {

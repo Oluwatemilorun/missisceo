@@ -105,7 +105,9 @@ export default {
     ],
   }),
   computed: {
-    ...mapGetters(['links']),
+    links() {
+      return this.$store.getters.links
+    }
   }
 }
 </script>

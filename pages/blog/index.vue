@@ -58,68 +58,33 @@
           <v-row justify="center" align="center">
             <v-col 
               cols="12" sm="8" md="6" lg="5" 
-              v-for="(item, i) in articles.slice(2,4)" :key="i"
+              v-for="(item, i) in articles.slice(3,5)" :key="i"
             >
-              <v-card elevation="0" class="mb-sm-10">
-                <a :href="`/blog/${item.slug}`">
-                  <v-img
-                    :src="item.hero"
-                    height="450"
-                  >
-                    <v-sheet 
-                      color="rgba(255,255,255,0.85)"
-                      width="130" 
-                      tile 
-                      class="mx-0 my-5 pa-2"
-                    >
-                      <small>{{ item.date }}</small> 
-                    </v-sheet>
-                    <v-sheet 
-                      tile 
-                      color="rgba(255,255,255,0.8)"
-                      style="margin-top:290px!important" 
-                      class="px-2 pb-10 pt-5"
-                    >
-                      <h2 class="text-center text-capitalize">
-                        {{ item.title }} 
-                      </h2>
-                    </v-sheet>
-                    <template v-slot:placeholder>
-                      <v-row align="center" justify="center" class="fill-height">
-                        <v-progress-circular indeterminate color="primary">
-                        </v-progress-circular>
-                      </v-row>
-                    </template>
-                  </v-img>
-                </a>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-sheet>
-    </div>
-
-    <!-- Older Posts -->
-    <heading title="older posts" />
-    <v-sheet class="mb-5">
-      <v-container>
-        <v-row justify="center" align="center">
-          <v-col 
-            cols="6" sm="6" md="4" 
-            v-for="(item, i) in articles" :key="i"
-          >
-            <v-card elevation="0">
-              <a :href="`/blog/${item.slug}`">
+              <v-card 
+                flat tile 
+                class="mb-sm-10"
+                :to="`/blog/${item.slug}`"
+              >
                 <v-img
                   :src="item.hero"
-                  class="d-flex align-end"
-                  height="300"
-                  
+                  height="450"
+                  class="item-hero"
                 >
-                  <v-sheet tile color="rgba(255,255,255,0.8)" class="pa-2">
-                    <h3 style="font-size:18px" class="text-capitalize text-center my-2">
+                  <v-sheet 
+                    color="rgba(255,255,255,0.85)"
+                    tile 
+                    class="item-date d-inline-block py-2 px-4"
+                  >
+                    <span style="font-size: 14px">{{ item.date }}</span> 
+                  </v-sheet>
+                  <v-sheet 
+                    tile 
+                    color="rgba(255,255,255,0.8)" 
+                    class="px-2 pb-10 pt-5 item-title"
+                  >
+                    <h2 class="text-center text-capitalize">
                       {{ item.title }} 
-                    </h3>
+                    </h2>
                   </v-sheet>
                   <template v-slot:placeholder>
                     <v-row align="center" justify="center" class="fill-height">
@@ -128,13 +93,50 @@
                     </v-row>
                   </template>
                 </v-img>
-              </a>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-sheet>
+    </div>
+
+    <!-- Older Posts -->
+    <Heading title="older posts" />
+    <v-sheet class="mb-5">
+      <v-container>
+        <v-row justify="center" align="center">
+          <v-col 
+            cols="6" sm="6" md="4" 
+            v-for="(post, i) in articles" :key="i"
+          >
+            <v-card flat tile :to="`/blog/${post.slug}`">
+              <v-img
+                :src="post.hero"
+                class="d-flex align-end"
+                height="300"
+                
+              >
+                <v-sheet tile color="rgba(255,255,255,0.8)" class="pa-2">
+                  <h3 
+                    style="font-size:18px" 
+                    class="text-capitalize text-center my-2"
+                  >
+                    {{ post.title }} 
+                  </h3>
+                </v-sheet>
+                <template v-slot:placeholder>
+                  <v-row align="center" justify="center" class="fill-height">
+                    <v-progress-circular indeterminate color="primary">
+                    </v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
             </v-card>
           </v-col>
         </v-row>
         <v-pagination 
-          :length="page.length" 
-          v-model="page.num"
+          :length="12" 
+          :value="2"
           total-visible="7"
           circle
           class="my-7 py-2 pagination"
@@ -151,23 +153,22 @@
 </template>
 
 <script>
+import Page from "~/components/PageTitle";
+import Heading from "~/components/Heading";
+import Gallery from "~/components/Gallery";
+
 export default {
   components: {
-    Page: () => import('~/components/PageTitle'),
-    heading: () => import('~/components/heading'),
-    Gallery: () => import('~/components/Gallery')
-  },
-  data() {
-    return {
-      page: { num: 2, length: 12 }
-    };
+    Page,
+    Heading,
+    Gallery
   },
   computed: {
     articles() {
-      return this.$store.getters.articles
+      return this.$store.getters['blog/articles']
     },
     categories() {
-      return this.$store.getters.categories
+      return this.$store.getters['category/categories']
     }
   },
   head() {
@@ -183,10 +184,19 @@ export default {
   border-top: 1px solid #BCBCBC;
   border-bottom: 1px solid #BCBCBC;
 }
-span.date {
-  font-size: 13px;
-  background: #ECEFF1;
-  color: black;
+
+.item-hero {
+  position: relative;
+}
+
+.item-date {
+  position: absolute;
+  top: 20px;
+}
+
+.item-title {
+  position: absolute;
+  bottom: 0px
 }
 
 </style>

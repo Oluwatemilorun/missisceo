@@ -105,10 +105,13 @@
 </template>
 
 <script>
+import Page from "~/components/PageTitle";
+import Gallery from "~/components/Gallery";
+
 export default {
   components: {
-    Page: () => import('~/components/PageTitle'),
-    Gallery: () => import('~/components/Gallery')
+    Page,
+    Gallery
   },
   head() {
     return {
@@ -118,9 +121,9 @@ export default {
 }
 </script>
 
-<style>
-h2.big-text {
-  font-size: 30px;
-  font-weight: 400;
-}
+<style scoped>
+  h2.big-text {
+    font-size: 30px;
+    font-weight: 400;
+  }
 </style>

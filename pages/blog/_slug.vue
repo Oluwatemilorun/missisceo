@@ -65,7 +65,7 @@
           </div>
 
           <div class="related-posts mt-3">
-            <heading title="Related posts" />
+            <Heading title="Related posts" />
             <v-slide-group show-arrows class="mb-10 mt-3">
               <v-slide-item v-for="(post, m) in articles.slice(0,6)" :key="m" class="">
                 <a :href="`/blog/${post.slug}`">
@@ -99,7 +99,7 @@
           </div>
 
           <div class="comments mt-5">
-            <heading title="5 comments" />
+            <Heading title="5 comments" />
             <v-row align="center" justify="center">
               <v-col cols="12">
                 <v-card 
@@ -134,8 +134,8 @@
           </div>
 
           <div class="comment-box my-5">
-            <heading title="Leave a comment" />
-            <reply-box />
+            <Heading title="Leave a comment" />
+            <Reply />
           </div>
         </v-col>
       </v-row>
@@ -148,13 +148,15 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import Heading from "~/components/Heading";
+import Reply from "~/components/blog/ReplyBox";
+import Gallery from "~/components/Gallery";
 
 export default {
   components: {
-    heading: () => import('~/components/heading'),
-    replyBox: () => import('~/components/blog/replybox'),
-    Gallery: () => import('~/components/Gallery')
+    Heading,
+    Reply,
+    Gallery
   },
   data() {
     return {
@@ -174,14 +176,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['articles']),
+    articles() {
+      return this.$store.getters['blog/articles'];
+    },
     article() {
       return this.articles.find(el => el.slug === this.slug)
     },
-    //newBP(){
-      //let item = {...this.article}
-      //return item
-    //},
     prevArticle() {
       const n = this.articles.indexOf(this.article);
       const prev = this.articles.find(el => this.articles.indexOf(el) + 1 === n);

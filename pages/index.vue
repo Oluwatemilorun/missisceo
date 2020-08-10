@@ -47,11 +47,11 @@
                   </h1>
                   <!-- mobile -->
                   <p class="post-text my-1 my-sm-3 hidden-md-and-up">
-                    {{ blogpost.body.slice(0,200) }}[<b class="primary--text">...</b>]
+                    {{ blogpost.body.slice(0,180) }}[<b class="primary--text">...</b>]
                   </p>
                   <!-- desktop -->
                   <p class="post-text my-3 hidden-sm-and-down">
-                    {{ blogpost.body.slice(0,500) }}[<b class="primary--text">...</b>]
+                    {{ blogpost.body.slice(0,400) }}[<b class="primary--text">...</b>]
                   </p> 
                   <p class="post-actions my-2 my-sm-5">
                     <v-btn 
@@ -101,9 +101,9 @@
       </v-row>
     </v-sheet>
     <v-pagination 
-      :length="page.length" 
-      v-model="page.num"
-      total-visible="7"
+      :length="10" 
+      :value="1"
+      :total-visible="7"
       color="primary--text"
       class="mb-10 pagination py-2"
     >
@@ -116,18 +116,15 @@
 </template>
 
 <script>
+import Gallery from "~/components/Gallery";
+
 export default {
   components: {
-    Gallery: () => import('~/components/Gallery')
-  },
-  data() {
-    return {
-      page: { num: 2, length: 12 },
-    };
+    Gallery
   },
   computed: {
     articles() {
-      return this.$store.getters.articles
+      return this.$store.getters['blog/articles']
     }
   },
   head() {

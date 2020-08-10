@@ -25,14 +25,6 @@
                 quo voluptas nulla pariatur.
               </p>
               <v-form ref="form">
-                <v-snackbar
-                  color="success"
-                  v-model="snackbar"
-                  dark
-                  bottom right
-                >
-                  Your Inquiry Has Been Sent Successfully!
-                </v-snackbar>
                 <v-row>
                   <v-col cols="12">
                     <v-text-field
@@ -70,7 +62,6 @@
                       color="primary"
                       block
                       x-large
-                      @click="snackbar=!snackbar"
                       depressed
                     >
                       Submit
@@ -91,17 +82,19 @@
 </template>
 
 <script>
+import Page from "~/components/PageTitle";
+import Gallery from "~/components/Gallery";
+
 export default {
   components: {
-    Page: () => import('~/components/PageTitle'),
-    Gallery: () => import('~/components/Gallery')
+    Page,
+    Gallery
   },
   data() {
     return {
       name: '',
       email: '',
       inquiry: '',
-      snackbar: false,
       rules: {
         required: val => !!val || 'This field is required',
         email: val => /^\w+\@\w+$/.test(val) || 'Invalid email, use the format: abc@def.com'
