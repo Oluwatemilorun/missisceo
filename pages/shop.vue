@@ -119,7 +119,7 @@
                       </p>
                       <heading title="Related products"/>
                       <v-row>
-                        <v-col cols="4" v-for="(pic,u) in products.slice(2,7)" :key="u">
+                        <v-col cols="6" sm="4" v-for="(pic,u) in products.slice(2,7)" :key="u">
                           <v-img
                             :src="`/img/${pic}.png`"
                             class="d-flex align-end pa-3"
