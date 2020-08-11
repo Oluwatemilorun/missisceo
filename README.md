@@ -1,6 +1,6 @@
-# theonuxt
+# Missisceo
 
-> My sublime Nuxt.js project
+> A Nuxt.js blog project
 
 ## Build Setup
 

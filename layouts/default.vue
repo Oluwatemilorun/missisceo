@@ -1,34 +1,48 @@
 <template>
-  <v-app class="app">
+  <v-app id="app" class="app">
     <Header />
-    <Drawer />
     <v-main>
       <nuxt />
     </v-main>
     <Footer />
-    <back-to-top />
   </v-app>
 </template>
 
 <script>
+import Header from "~/components/core/Header";
+import Footer from "~/components/core/Footer";
+
 export default {
   components: {
-    Header: () => import('~/components/core/Header'),
-    Drawer: () => import('@/components/core/Drawer'),
-    Footer: () => import('~/components/core/Footer'),
-    backToTop: () => import('~/components/core/BackToTop')
+    Header,
+    Footer
   }
 }
 </script>
+
 <style>
-.v-application, .app {
-  font-family: 'Raleway', sans-serif
+body, .v-application, #app, .app {
+  font-family: 'Poppins', sans-serif
 }
+
+h1, h2, h3, h4, h5, h6, .caption, .headline{
+  font-family: 'Gotu', sans-serif
+}
+
 a {
   text-decoration: none;
 }
-::selection {
-  background: #FFECB3;
-  color: #263238
+
+.pagination {
+  border-top: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
+}
+.pagination .v-pagination__item, .pagination .v-pagination__navigation {
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent!important;
+}
+.pagination .v-pagination__item--active {
+  background: transparent!important;
 }
 </style>

@@ -1,12 +1,13 @@
 import colors from 'vuetify/es5/util/colors';
-import '@mdi/font/css/materialdesignicons.min.css';
+//import '@mdi/font/css/materialdesignicons.min.css';
 
 const theme= {
   dark: false,
   themes: {
     light: {
-      primary: colors.amber.darken4,
-      secondary: colors.grey.darken2,
+      primary: '#D99326',
+      secondary: colors.grey.darken4,
+      tertiary: colors.grey.lighten5,
       accent: colors.blue.darken2,
       info: colors.teal.lighten1,
       warning: colors.amber.base,

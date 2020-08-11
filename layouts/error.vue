@@ -19,6 +19,7 @@
           x-large
           class="my-10"
           to="/"
+          depressed
         >
           Back to Homepage
         </v-btn>

@@ -1,76 +1,78 @@
 <template>
-  <v-footer dark padless class="footer">
-    <!-- Info section -->
-    <v-sheet tile color="rgb(62,72,95)" class="my-0" width="100%">
-      <v-container>
-        <v-row>
-          <v-col cols="12" sm="5" md="6" class="pa-5">
-            <h2 class="text-uppercase font-weight-medium">
-              Subscribe to my newsletter to get outfit inspiration and beauty tips!
-            </h2>
-          </v-col>
-          <v-col cols="12" sm="7" md="6" class="px-5">
-            <v-row>
-              <v-col cols="7">
-                <v-text-field
-                  v-model="email"
-                  outlined
-                  dense
-                  label="Email Address"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="5">
-                <v-btn light color="grey lighten-3">
-                  Submit
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-sheet> <!-- Info Section ends -->
-    <v-sheet color="secondary darken-4" width="100%" tile>
-      <v-container>
-        <v-row>
-          <v-col cols="12" md="4">
-            <v-list color="rgba(0,0,0,0)" flat>
-              <v-list-item 
-                dense 
-                v-for="(link, n) in links" :key="n" 
-                :to="link.href"
-              >
-                <v-list-item-title >
+  <v-footer dark padless id="footer">
+    <v-sheet color="rgb(51,64,89)" flat width="100%" tile class=" mt-0">
+      <v-container class="pb-0">
+        <v-row justify="center">
+          <v-col cols="12" sm="10" md="6">
+            <span 
+              @click="$router.push('/')" 
+              class="tertiary--text pa-5"
+              style="cursor: pointer"
+            >
+              <h2 class="d-inline logo text-uppercase">
+                Missisceo
+              </h2>
+            </span>
+            <div class="mx-1">
+              <v-list color="transparent" class="tertiary--text" flat>
+                <v-list-item 
+                  v-for="(link, n) in links.slice(1,)" 
+                  :key="n"
+                  :to="link.href"
+                  class="text-capitalize py-1 my-1" 
+                >
                   {{ link.text }}
-                </v-list-item-title>
-              </v-list-item>
-            </v-list>
+                </v-list-item>
+                <v-list-item 
+                  v-for="(category, g) in categories" 
+                  :key="g"
+                  class="text-capitalize py-1 my-1"
+                  link 
+                >
+                  {{ category }}
+                </v-list-item>
+              </v-list>
+            </div>
           </v-col>
-          <v-col cols="12" md="8" class="my-0 py-0">
+          <v-col cols="12" sm="10" md="6" class="my-0 py-0">
             <v-row>
-              <v-col cols="4" sm="3" lg="2" v-for="n in 12" class="d-flex child-flex" :key="n">
-                <v-img src="/img/sunset.jpg">
-                  <template v-slot:placeholder>
-                    <v-row align="center" justify="center" class="fill-height">
-                      <v-progress-circular indeterminate color="primary">
-                      </v-progress-circular>
-                    </v-row>
-                  </template>
-                </v-img>
+              <v-col cols="12" class="pa-5 pb-0">
+                <h3 class="text-uppercase font-weight-medium">
+                  Subscribe to my newsletter to get outfit inspiration and 
+                  beauty tips!
+                </h3>
+              </v-col>
+              <v-col cols="12" class="px-5">
+                <v-row>
+                  <v-col cols="8" sm="7" md="8" xl="7">
+                    <v-text-field
+                      outlined
+                      dense
+                      placeholder="Email Address"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="4" sm="5" md="4" xl="5">
+                    <v-btn light depressed class="py-5" color="grey lighten-3">
+                      Submit
+                    </v-btn>
+                  </v-col>
+                </v-row>
               </v-col>
             </v-row>
           </v-col>
         </v-row>
       </v-container>
     </v-sheet>
-    <hr />
+
     <v-sheet tile flat width="100%">
       <v-sheet color="secondary darken-4 text--grey" tile class="pa-5 pb-2">
         <v-row justify="center">
           <v-col cols="12" sm="6" class="text-center text-sm-left">
-            &copy; {{ new Date().getFullYear() }} —
-            <strong class="pr-1">
-              <span class="primary--text">MissisCEO</span>.
-            </strong> All rights reserved.
+           
+            <h4 class="d-inline">
+              &copy; {{ new Date().getFullYear() }}
+              <span class="pl-1">MissisCEO</span>
+            </h4>
           </v-col>
           <v-col cols="12" sm="6" class="pa-0 text-center text-sm-right">
             <v-btn
@@ -79,7 +81,8 @@
               class="mr-1"
               icon
               tile
-              color="primary"
+              small
+              color="tertiary"
             >
               <v-icon size="20px">{{ icon }}</v-icon>
             </v-btn>
@@ -93,23 +96,30 @@
 <script>
 export default {
   data: () => ({
-    email: '',
     icons: [
       'mdi-facebook',
       'mdi-twitter',
+      'mdi-whatsapp',
       'mdi-youtube',
       'mdi-linkedin',
       'mdi-instagram'
-    ],
+    ]
   }),
   computed: {
     links() {
       return this.$store.getters.links;
+    },
+    categories() {
+      return this.$store.getters['category/categories'];
     }
   }
 };
 </script>
 
-<style>
-
+<style scoped>
+#footer .v-list .v-list-item {
+  display: inline-block;
+  min-height: 18px;
+  font-size: 15px;
+}
 </style>

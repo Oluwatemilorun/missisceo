@@ -2,39 +2,29 @@
   <div id="shop">
     <v-carousel
       cycle
-      height="300"
+      height="400"
       hide-delimiter-background
       show-arrows-on-hover
       delimiter-icon="mdi-minus"
       class="mb-5"
     >
-      <v-carousel-item
-        v-for="(slide, n) in slides" 
-        :key="n"
-      >
-        <v-sheet
-          color="grey darken-4"
-          height="300"
-        >
+      <v-carousel-item v-for="(slide, n) in slides" :key="n">
+        <v-sheet color="grey lighten-3" height="450">
           <v-img 
-            src="/img/snowcup.jpg"
+            src="/img/black_soap.png"
             height="100%"
-            class="px-10"
+            class="px-10 pt-10"
           >
-            <v-row 
-              align="center"
-              justify="end" 
-              class="fill-height"
-            >
-              <v-col cols="12" sm="6">
-                <div class="text-capitalize" style="font-size: 42px">
+            <v-row justify="end">
+              <v-col cols="12" sm="6" class="mt-md-10 py-10">
+                <h1 class="text-capitalize" style="font-size: 36px">
                   {{ slide }} choice van haff pink <br>
-                </div>
-                <div>
+                </h1>
+                <h4 class="font-weight-thin">
                   Nam libero tempore, cum soluta nobis est eligendi optio cumque 
                   nihil impedit quo minus id quod maxime placeat facere possimus, 
                   omnis voluptas assumenda est
-                </div>
+                </h4>
               </v-col>
             </v-row>
             <template v-slot:placeholder>
@@ -49,33 +39,42 @@
     </v-carousel>
 
     <!-- Latest Products-->
-    <heading title="Now in stock"/>
+    <Heading title="our bestsellers"/>
     <v-sheet class="mb-5">
       <v-container>
         <v-row justify="center" align="center">
           <v-col 
-            cols="12" sm="6" md="4" lg="3" 
-            v-for="i in 12" :key="i"
+            cols="6" sm="6" md="4" 
+            v-for="(product, p) in products" 
+            :key="p"
           >
-            <v-img
-              src="/img/makeup-pencil.png"
-              class="d-flex align-end pa-3"
-            >
-              <v-sheet tile color="rgba(255,255,255,0.8)" class="pa-2 text-center">
-                <h3 class="text-capitalize text-center">
-                  Product {{ i }}
-                </h3>
-                <div>N 2500</div>
-              </v-sheet>
-            </v-img>
+            <v-card flat tile :to="`/product/${product.id}`">
+              <v-img
+                :src="product.img"
+                class="d-flex align-end pa-3"
+                height="300"
+              >
+                <v-sheet 
+                  tile 
+                  color="rgba(255,255,255,0.8)" 
+                  class="pa-2 text-center"
+                >
+                  <h3 class="text-capitalize text-center">
+                    {{ product.name }}
+                  </h3>
+                  <h4> N{{ product.price }} </h4>
+                </v-sheet>
+              </v-img>
+            </v-card>
           </v-col>
         </v-row>
         <v-pagination 
-          :length="page.length" 
-          v-model="page.num"
+          :length="10" 
+          :value="1"
           total-visible="7"
-          dark
-          class="my-7"
+          circle
+          class="my-7 pagination py-2"
+          color="primary--text" 
         >
         </v-pagination>
       </v-container>
@@ -84,13 +83,15 @@
 </template>
 
 <script>
+import Heading from "~/components/Heading";
+
 export default {
   components: {
-    heading: () => import('~/components/heading')
+    Heading
   },
   data() {
     return {
-      page: { num: 1, length: 10 },
+      dialog: [],
       slides: [
         'First',
         'Second',
@@ -98,6 +99,11 @@ export default {
         'Fourth',
         'Fifth'
       ]
+    }
+  },
+  computed: {
+    products() {
+      return this.$store.getters['shop/products'];
     }
   },
   head() {
