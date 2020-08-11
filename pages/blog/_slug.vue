@@ -1,9 +1,8 @@
 <template>
   <div id="post">
-    <v-container fluid>
+    <v-container>
       <v-row align="center" justify="center">
-        <!-- Blog Post Content -->
-        <v-col cols="12" sm="10" md="9" lg="8" class="">
+        <v-col cols="12" sm="10" lg="9" class="">
           <div class="heading mt-5 mb-5">
             <div class="divider"></div>
             <div class="title-box">
@@ -103,20 +102,21 @@
             <v-row align="center" justify="center">
               <v-col cols="12">
                 <v-card 
-                  color="grey lighten-5" 
-                  class="pa-2 mb-5"
+                  color="" 
+                  class="py-3 mb-5 px-10"
                   v-for="(name, j) in names" :key="j"
                   flat
+                  outlined
                 >
                   <v-row align="center">
-                    <v-col cols="3" sm="4" md="3" lg="2">
+                    <v-col cols="3" sm="3" md="3" lg="2">
                       <v-avatar
-                        size="85"
+                        size="80"
                       >
                         <img src="/img/man.png" alt="person" />
                       </v-avatar>
                     </v-col>
-                    <v-col cols="9" sm="8" md="9" lg="10">
+                    <v-col cols="9" sm="9" md="9" lg="10">
                       <h4>{{ name }}</h4>
                       <small class="text--secondary">
                        <span class="primary--text">#</span> 2{{j}} September 2099
@@ -124,7 +124,7 @@
                     </v-col>
                   </v-row>
                   
-                  <p class="px-10">
+                  <p>
                     Neque porro quisquam est, qui dolorem ipsum quia dolor 
                     sit amet, consectetur, adipisci velit, qui dolorem ipsum quia dolor.
                   </p>
@@ -153,6 +153,12 @@ import Reply from "~/components/blog/ReplyBox";
 import Gallery from "~/components/Gallery";
 
 export default {
+
+  async asyncData({ params }) {
+    const slug = await params.slug;
+    return { slug }
+  },
+
   components: {
     Heading,
     Reply,
@@ -160,7 +166,6 @@ export default {
   },
   data() {
     return {
-      slug: this.$route.params.slug,
       names: [
         'Timo Werner',
         'Hakim Ziyech',

@@ -48,86 +48,24 @@
             v-for="(product, p) in products" 
             :key="p"
           >
-            <v-dialog v-model="dialog[p]">
-              <template v-slot:activator="{on}">
-                <v-card flat tile link v-on="on">
-                  <v-img
-                    :src="product.img"
-                    class="d-flex align-end pa-3"
-                    height="300"
-                  >
-                    <v-sheet 
-                      tile 
-                      color="rgba(255,255,255,0.8)" 
-                      class="pa-2 text-center"
-                    >
-                      <h3 class="text-capitalize text-center">
-                        {{ product.name }}
-                      </h3>
-                      <h4> N{{ product.price }} </h4>
-                    </v-sheet>
-                  </v-img>
-                </v-card>
-              </template>
-              <v-card class="pa-10">
-                <div>
-                  <v-row>
-                    <v-col cols="12" md="6">
-                      <v-row>
-                        <v-col cols="2" class="py-0">
-                          <v-row justify="end">
-                            <v-col cols="12" v-for="x in 4" :key="x">
-                              <v-card height="70" flat tile>
-                                <v-img src="/img/makeup-5.png" height="70"/>
-                              </v-card>
-                            </v-col>
-                          </v-row>
-                        </v-col>
-                        <v-col cols="10" class="py-0">
-                          <v-card height="400" flat tile>
-                            <v-img :src="product.img" height="100%"/>
-                          </v-card>
-                          <div class="ma-5">
-                            <v-icon large class="mr-3" color="accent darken-1">
-                              mdi-facebook
-                            </v-icon>
-                            <v-icon large color="accent lighten-1">
-                              mdi-twitter
-                            </v-icon>
-                          </div>
-                        </v-col>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing 
-                        elit. Est blanditiis dolorem culpa incidunt minus 
-                        dignissimos deserunt repellat aperiam quasi sunt 
-                        officia expedita beatae cupiditate, maiores 
-                        repudiandae, nostrum, reiciendis facere nemo! Cons 
-                        purus sit amet fermentum. Cras justo odio, dapibus ac 
-                        facilisis in, egestas eget quam. Morbi leo risus, porta
-                         ac consectetur ac, vestibulum at eros.
-                      </div>
-                      <p>
-                        <v-btn color="blue-grey lighten-3" depressed large>Shop now</v-btn>
-                      </p>
-                      <heading title="Related products"/>
-                      <v-row>
-                        <v-col cols="6" sm="4" v-for="(prod, d) in products.slice(2,7)" :key="d">
-                          <v-img
-                            :src="prod.img"
-                            class="d-flex align-end pa-3"
-                            height="200"
-                          >
-                          </v-img>
-                        </v-col>
-                      </v-row>
-                    </v-col>
-                  </v-row>
-                </div>
-              </v-card>
-            </v-dialog>
+            <v-card flat tile :to="`/product/${product.id}`">
+              <v-img
+                :src="product.img"
+                class="d-flex align-end pa-3"
+                height="300"
+              >
+                <v-sheet 
+                  tile 
+                  color="rgba(255,255,255,0.8)" 
+                  class="pa-2 text-center"
+                >
+                  <h3 class="text-capitalize text-center">
+                    {{ product.name }}
+                  </h3>
+                  <h4> N{{ product.price }} </h4>
+                </v-sheet>
+              </v-img>
+            </v-card>
           </v-col>
         </v-row>
         <v-pagination 
@@ -165,7 +103,7 @@ export default {
   },
   computed: {
     products() {
-      return this.$store.getters['product/products'];
+      return this.$store.getters['shop/products'];
     }
   },
   head() {

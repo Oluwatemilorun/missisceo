@@ -58,7 +58,7 @@
           <v-row justify="center" align="center">
             <v-col 
               cols="12" sm="8" md="6" lg="5" 
-              v-for="(item, i) in articles.slice(3,5)" :key="i"
+              v-for="(item, i) in articles.slice(2,4)" :key="i"
             >
               <v-card 
                 flat tile 
@@ -71,7 +71,7 @@
                   class="item-hero"
                 >
                   <v-sheet 
-                    color="rgba(255,255,255,0.85)"
+                    color="rgba(255,255,255,0.8)"
                     tile 
                     class="item-date d-inline-block py-2 px-4"
                   >
@@ -80,7 +80,7 @@
                   <v-sheet 
                     tile 
                     color="rgba(255,255,255,0.8)" 
-                    class="px-2 pb-10 pt-5 item-title"
+                    class="px-2 py-5 item-title"
                   >
                     <h2 class="text-center text-capitalize">
                       {{ item.title }} 

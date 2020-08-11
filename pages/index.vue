@@ -5,7 +5,7 @@
       <v-parallax
         src="/img/books.png"
         dark
-        height="300"
+        height="350"
       >
       </v-parallax>
     </v-sheet>
@@ -15,22 +15,16 @@
       <v-row no-gutters align="center" >
         <v-col 
           cols="12" md="10" 
-          v-for="(blogpost, i) in articles.slice(0,6)" :key="i" 
+          v-for="(article, i) in articles.slice(0,6)" :key="i" 
           class="d-flex full-box justify-center"
         >
-           <div>
-            <v-sheet 
-              class="pillar-box ma-10 mt-0 pl-10 ml-lg-1"
-              tile 
-            >
-              <v-sheet 
-                class="img-box"
-                tile
-              >
-                <v-card height="100%" color="transparent" tile flat :to="`blog/${blogpost.slug}`">
-                  <v-img :src="blogpost.hero" width="100%" height="100%" class="py-5">
+          <div>
+            <v-sheet class="pillar-box ma-10 mt-0 pl-10 ml-lg-1" tile>
+              <v-sheet class="img-box" tile>
+                <v-card height="100%" color="transparent" tile flat :to="`blog/${article.slug}`">
+                  <v-img :src="article.hero" width="100%" height="100%" class="py-5">
                     <span color="grey lighten-2" class="date mx-0 pa-2">
-                      {{ blogpost.date }}
+                      {{ article.date }}
                     </span>
                   </v-img>
                 </v-card>
@@ -43,15 +37,15 @@
                   elevation="2"
                 >
                   <h1 class="post-title">
-                    {{ blogpost.title }}
+                    {{ article.title }}
                   </h1>
                   <!-- mobile -->
                   <p class="post-text my-1 my-sm-3 hidden-md-and-up">
-                    {{ blogpost.body.slice(0,180) }}[<b class="primary--text">...</b>]
+                    {{ article.body.slice(0,180) }}[<b class="primary--text">...</b>]
                   </p>
                   <!-- desktop -->
                   <p class="post-text my-3 hidden-sm-and-down">
-                    {{ blogpost.body.slice(0,400) }}[<b class="primary--text">...</b>]
+                    {{ article.body.slice(0,400) }}[<b class="primary--text">...</b>]
                   </p> 
                   <p class="post-actions my-2 my-sm-5">
                     <v-btn 
@@ -59,7 +53,7 @@
                       small
                       depressed
                       dark
-                      :to="`/blog/${blogpost.slug}`"
+                      :to="`/blog/${article.slug}`"
                       class="hidden-md-and-up"
                     >
                       Read More
@@ -68,7 +62,7 @@
                       color="primary"  
                       depressed
                       dark
-                      :to="`/blog/${blogpost.slug}`"
+                      :to="`/blog/${article.slug}`"
                       class="hidden-sm-and-down"
                     >
                       Read More

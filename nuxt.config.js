@@ -1,11 +1,3 @@
-import data from './data/articles.json'
-
-let dynamicRoutes = () => {
-  return new Promise(resolve => {
-    resolve(data.map(el => `blog/${el.slug}`))
-  })
-}
-
 export default {
   mode: 'universal',
   head: {
@@ -33,14 +25,8 @@ export default {
     customVariables: ['~/assets/styles/variables.scss'],
     optionsPath: '~/plugins/vuetify.config.js'
   },
-  // Generate single blog post page
-  generate: {
-    routes: dynamicRoutes
-  },
+  
   build: {
-    /*
-    ** You can extend webpack config here
-    */
     extend (config, ctx) {
     }
   }
