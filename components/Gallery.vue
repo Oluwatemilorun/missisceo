@@ -1,7 +1,7 @@
 <template>
-  <v-sheet tile class="mb-0" width="100%">
+  <v-container fluid class="py-0">
     <v-row>
-      <v-col cols="3" md="2" v-for="(img, n) in gallery" class="d-flex child-flex pa-0" :key="n">
+      <v-col cols="3" md="2" v-for="(img, n) in gallery" :key="n" class="pa-0">
         <v-img :src="`/img/${img}`">
           <template v-slot:placeholder>
             <v-row align="center" justify="center" class="fill-height">
@@ -12,7 +12,7 @@
         </v-img>
       </v-col>
     </v-row>
-  </v-sheet>
+  </v-container>
 </template>
 
 <script>

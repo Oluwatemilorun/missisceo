@@ -75,7 +75,7 @@
                     tile 
                     class="item-date d-inline-block py-2 px-4"
                   >
-                    <span style="font-size: 14px">{{ item.date }}</span> 
+                    {{ item.date }} 
                   </v-sheet>
                   <v-sheet 
                     tile 
@@ -192,6 +192,7 @@ export default {
 .item-date {
   position: absolute;
   top: 20px;
+  font-size: 14px;
 }
 
 .item-title {

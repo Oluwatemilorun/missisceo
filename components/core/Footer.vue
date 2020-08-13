@@ -34,7 +34,7 @@
               </v-list>
             </div>
           </v-col>
-          <v-col cols="12" sm="10" md="6" class="my-0 py-0">
+          <v-col cols="12" sm="10" md="6" class="my-0 py-0" id="subscribe">
             <v-row>
               <v-col cols="12" class="pa-5 pb-0">
                 <h3 class="text-uppercase font-weight-medium">
@@ -52,7 +52,7 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols="4" sm="5" md="4" xl="5">
-                    <v-btn light depressed class="py-5" color="grey lighten-3">
+                    <v-btn light depressed color="grey lighten-3">
                       Submit
                     </v-btn>
                   </v-col>
@@ -121,5 +121,8 @@ export default {
   display: inline-block;
   min-height: 18px;
   font-size: 15px;
+}
+#footer #subscribe .v-size--default {
+  height: 40px!important 
 }
 </style>

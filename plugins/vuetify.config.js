@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors';
 //import '@mdi/font/css/materialdesignicons.min.css';
 
-const theme= {
+const theme = {
   dark: false,
   themes: {
     light: {
