@@ -1,9 +1,9 @@
 <template>
   <v-app id="app" class="app">
     <Header />
-    <v-main>
+    <v-content>
       <nuxt />
-    </v-main>
+    </v-content>
     <Footer />
   </v-app>
 </template>
@@ -31,6 +31,10 @@ h1, h2, h3, h4, h5, h6, .caption, .headline{
 
 a {
   text-decoration: none;
+}
+
+.v-app-bar--fixed.v-app-bar--hide-shadow.white > .v-toolbar__content {
+  border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
 .pagination {

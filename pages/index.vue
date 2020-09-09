@@ -1,108 +1,49 @@
 <template>
   <div id="home">
     <!-- Intro -->
-    <v-sheet tile flat color="grey lighten-3" max-height="400" class="pa-0 ma-0 mb-10">
-      <v-parallax
-        src="/img/books.png"
-        dark
-        height="350"
-      >
+    <v-sheet tile flat color="grey lighten-3" max-height="400" class="">
+      <v-parallax src="/img/books.png" dark height="350">
       </v-parallax>
     </v-sheet>
 
     <!-- Blog Posts -->
-    <v-sheet class="articles">
-      <v-row no-gutters align="center" >
-        <v-col 
-          cols="12" md="10" 
-          v-for="(article, i) in articles.slice(0,6)" :key="i" 
-          class="d-flex full-box justify-center"
-        >
-          <div>
-            <v-sheet class="pillar-box ma-10 mt-0 pl-10 ml-lg-1" tile>
-              <v-sheet class="img-box" tile>
-                <v-card height="100%" color="transparent" tile flat :to="`blog/${article.slug}`">
-                  <v-img :src="article.hero" width="100%" height="100%" class="py-5">
-                    <span color="grey lighten-2" class="date mx-0 pa-2">
-                      {{ article.date }}
-                    </span>
-                  </v-img>
-                </v-card>
-              </v-sheet>
-              <div class="post-box">
-                <v-card 
-                  width="100%" 
-                  height="100%"
-                  class="pa-3 pa-md-5 post-card"
-                  elevation="2"
-                >
-                  <h1 class="post-title">
-                    {{ article.title }}
-                  </h1>
-                  <!-- mobile -->
-                  <p class="post-text my-1 my-sm-3 hidden-md-and-up">
-                    {{ article.body.slice(0,180) }}[<b class="primary--text">...</b>]
-                  </p>
-                  <!-- desktop -->
-                  <p class="post-text my-3 hidden-sm-and-down">
-                    {{ article.body.slice(0,400) }}[<b class="primary--text">...</b>]
-                  </p> 
-                  <p class="post-actions my-2 my-sm-5">
-                    <v-btn 
-                      color="primary"  
-                      small
-                      depressed
-                      dark
-                      :to="`/blog/${article.slug}`"
-                      class="hidden-md-and-up"
-                    >
-                      Read More
-                    </v-btn>
-                    <v-btn 
-                      color="primary"  
-                      depressed
-                      dark
-                      :to="`/blog/${article.slug}`"
-                      class="hidden-sm-and-down"
-                    >
-                      Read More
-                    </v-btn>
-                    <span class="ml-5"> 
-                      <v-btn 
-                        color="accent lighten-1"  
-                        dark
-                        small
-                        icon
-                      >
-                        <v-icon>mdi-twitter</v-icon>
-                      </v-btn>
-                      <v-btn 
-                        color="accent darken-1"  
-                        dark
-                        small
-                        icon
-                      >
-                        <v-icon>mdi-facebook</v-icon>
-                      </v-btn>
-                    </span>
-                  </p>
-                </v-card>
-              </div>
-            </v-sheet>
-          </div>
+    <v-container>
+      <v-row justify="center">
+        <!-- Mobile Blogpost Card -->
+        <v-col cols="12" sm="10" class="hidden-md-and-up" id="mobile">
+          <v-container fluid class="py-0 articles">
+            <Mobile 
+              :article="article" 
+              v-for="(article, a) in articles.slice(0,6)" 
+              :key="a"
+            />
+          </v-container>
         </v-col>
-        <v-spacer></v-spacer>
+        <!-- Desktop Blogpost Card -->
+        <v-col md="12" lg="9" class="hidden-sm-and-down" id="desktop">
+          <v-container fluid class="articles">
+            <Desktop 
+              :post="article" 
+              v-for="(article, r) in articles.slice(0,6)" 
+              :key="r"
+            />
+          </v-container>
+        </v-col>
+        <!-- Pagination - all screens -->
+        <v-col cols="12" sm="10" md="12" lg="9">
+          <v-pagination 
+            :length="12" 
+            :value="2"
+            total-visible="7"
+            circle
+            class="py-2 pagination"
+            color="primary--text"
+          >
+          </v-pagination>
+        </v-col>
       </v-row>
-    </v-sheet>
-    <v-pagination 
-      :length="10" 
-      :value="1"
-      :total-visible="7"
-      color="primary--text"
-      class="mb-10 pagination py-2"
-    >
-    </v-pagination>
-
+    </v-container>
+    
     <!-- Gallery -->
     <Gallery />
 
@@ -111,10 +52,14 @@
 
 <script>
 import Gallery from "~/components/Gallery";
+import Mobile from "~/components/BlogCardMobile";
+import Desktop from "~/components/BlogCardDesktop";
 
 export default {
   components: {
-    Gallery
+    Gallery, 
+    Mobile,
+    Desktop
   },
   computed: {
     articles() {
@@ -129,144 +74,83 @@ export default {
 };
 </script>
 
-<style scoped>
-.pillar-box {
-  position: relative;
-  z-index: 1;
-  width: 0;
-  height: 350px;
+<style>
+.articles .post-img, .post {
+  direction: ltr;
 }
-.img-box {
+.articles .item-date {
   position: absolute;
-  z-index: 2;
-  width: 210px;
-  height: 350px;
+  top: 20px;
+  font-size: 14px;
 }
-.post-box {
-  position: absolute;
-  z-index: 3;
-  width: 250px;
-  height: 350px;
-  top: 0;
-}
-span.date {
-  font-size: 13px;
-  background: #ECEFF1;
-  color: black;
-  margin-top: 150px;
-}
-h1.post-title {
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-.post-details {
-  font-size: 12px;
-  text-transform: uppercase;
+.articles .box:nth-child(even) .item-date {
+  right: 0px;
 }
 
-.full-box {
-  padding-top: 5px;
+#mobile .articles .box:nth-child(even) {
+  direction: rtl
+}
+#mobile .articles .post h2 {
+  font-size: 18px
 }
 
-div.articles .full-box:nth-child(even) .img-box {
-  right: -25px;
-  text-align: right;
-}
-
-div.articles .full-box:nth-child(odd) .img-box {
-  left: -25px;
-}
-div.articles .full-box:nth-child(odd) .post-box {
-  left: 480%;
-}
-
-div.articles .full-box:nth-child(even) .post-box {
-  right: 480%;
-}
-
-div.articles .full-box:nth-child(odd) {
-  padding-right: 375px;
-}
-
-div.articles .full-box:nth-child(even) {
-  padding-left: 375px;
-}
-
-@media screen and (min-width: 600px) {
-  h1.post-title {
+@media screen and (min-width: 560px) {
+  #mobile .articles .post h2 {
     font-size: 20px;
   }
-
-  .img-box {
-    width: 280px;
+  #mobile .articles .post-text {
+    font-size: 18px;
   }
-
-  .post-box {
-    width: 280px;
+}
+@media screen and (min-width: 600px) {
+  #mobile .articles .post h2 {
+    font-size: 18px;
   }
-  
-  div.articles .full-box:nth-child(even) .img-box {
-    right: -75px;
-    text-align: right;
+  #mobile .articles .post-text {
+    font-size: 16px;
   }
-
-  div.articles .full-box:nth-child(odd) .img-box {
-    left: -75px;
+}
+@media screen and (min-width: 650px) {
+  #mobile .articles .post h2 {
+    font-size: 20px;
   }
-  div.articles .full-box:nth-child(odd) .post-box {
-    left: 525%;
+  #mobile .articles .post-text {
+    font-size: 17px;
   }
-
-  div.articles .full-box:nth-child(even) .post-box {
-    right: 525%;
-  }  
+}
+@media screen and (min-width: 700px) {
+  #mobile .articles .post h2 {
+    font-size: 22px;
+  }
+  #mobile .articles .post-text {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 840px) {
+  #mobile .articles .post h2 {
+    font-size: 26px;
+  }
+  #mobile .articles .post-text {
+    font-size: 18px;
+  }
 }
 
-@media screen and (min-width: 960px) {
-  .pillar-box {
-    left: -50px;
-    width: 125px;
-    height: 450px;
-    background-color: goldenrod;
-  }
-  .post-box {
-    width: 400px;
-    height: 450px;
-  }
-  .img-box {
-    top: -50px;
-    width: 350px;
-    height: 450px;
-  }
-  
-  h1.post-title {
-    font-size: 24px;
-  }
-  
-  .full-box {
-    margin-top: 60px;
-  }
-
-  div.articles .full-box:nth-child(even) .img-box {
-    right: 50%;
-    text-align: right;
-  }
-
-  div.articles .full-box:nth-child(odd) .img-box {
-    left: 50%;
-  }
-  div.articles .full-box:nth-child(odd) .post-box {
-    left: 275%;
-  }
-  div.articles .full-box:nth-child(even) .post-box {
-    right: 275%;
-  }
-  div.articles .full-box:nth-child(even) {
-    padding-left: 900px;
-  }
-  div.articles .full-box:nth-child(odd) {
-    padding-right: 325px;
-  }
+#desktop .articles .post-img {
+   margin-left: -75px; margin-top: -50px
+}
+#desktop .articles .post {
+  margin-left: -50px
+}
+#desktop .articles .box:nth-child(even) {
+  direction: rtl
+}
+#desktop .articles .box:nth-child(even) .post {
+  margin: 0;
+  margin-right: -50px
+}
+#desktop .articles .box:nth-child(even) .post-img {
+  margin: 0;
+  margin-right: -75px;
+  margin-top: -50px
 }
 </style>

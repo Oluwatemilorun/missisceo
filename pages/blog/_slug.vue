@@ -2,7 +2,7 @@
   <div id="post">
     <v-container>
       <v-row align="center" justify="center">
-        <v-col cols="12" sm="10" lg="9" class="">
+        <v-col cols="12" sm="10" lg="9">
           <div class="heading mt-5 mb-5">
             <div class="divider"></div>
             <div class="title-box">
@@ -11,7 +11,7 @@
               </h5>
             </div>
           </div>
-          <h1 class="post-title text-capitalize">
+          <h1 class="post-title text-capitalize text-center">
             {{ article.title }}
           </h1>
           <v-row align="center" justify="center" class="my-5">
@@ -25,14 +25,14 @@
             </p>
           </div>
           <div class="post-actions py-7 text-center">
-            <h3 class="text-uppercase my-3">
-              Share this post on
+            <h3 class="text-">
+              Share this post on: 
             </h3>
             <v-btn 
               :color="item.color"  
               dark
               depressed
-              class="share mr-3"
+              class="share my-3 mx-2"
               v-for="(item, q) in share" :key="q"
             >
               <v-icon left>{{ item.icon }}</v-icon>
@@ -46,8 +46,8 @@
                 <a :href="`/blog/${prevArticle.slug}`">
                   <v-icon large left color="primary">mdi-chevron-left</v-icon>
                   PREV
-                  <p class="pl-10">
-                    <big>{{ prevArticle.title }}</big>
+                  <p class="pl-10 text-capitalize" style="font-size: 17px">
+                    {{ prevArticle.title }}
                   </p>
                 </a>
               </v-col>
@@ -55,8 +55,8 @@
                 <a :href="`/blog/${nextArticle.slug}`">
                   NEXT
                   <v-icon large right color="primary">mdi-chevron-right</v-icon>
-                  <p class="pr-10">
-                    <big>{{ nextArticle.title }}</big>
+                  <p class="pr-10 text-capitalize" style="font-size: 17px">
+                    {{ nextArticle.title }}
                   </p>
                 </a>
               </v-col>
