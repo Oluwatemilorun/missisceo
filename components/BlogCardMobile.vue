@@ -1,7 +1,8 @@
 <template>
   <v-row 
     justify="center" 
-    class="box"
+    class="box my-10"
+    style="min-height: 400px"
   >
     <v-col cols="6" class="post-img px-1">
       <v-card 
@@ -11,7 +12,7 @@
         color="grey lighten-4"
         :to="`/blog/${article.slug}`"
       >
-        <v-img :src="article.hero" height="360">
+        <v-img :src="article.hero" height="inherit">
           <v-sheet 
             color="rgba(255,255,255,0.8)"
             tile 
@@ -29,7 +30,7 @@
       </v-card>
     </v-col>
     <v-col cols="6" class="post px-1" style="direction: ltr">
-      <v-card class="pa-3 pr-1" height="360">
+      <v-card class="pa-5" height="100%">
         <h2 class="text-capitalize">{{ article.title }}</h2>
         <p class="pt-2 pb-0 post-text">
           {{ article.body.slice(0,150) }}[<b class="primary--text">...</b>]
