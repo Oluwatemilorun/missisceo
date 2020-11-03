@@ -1,7 +1,9 @@
 export default {
+  target: 'static',
+
   head: {
     titleTemplate: '%s - MissisCEO Blog',
-    title: 'Welcome to MissisCEO Blog',
+    title: 'Welcome to MissisCEO',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
