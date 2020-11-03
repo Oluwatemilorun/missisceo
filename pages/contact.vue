@@ -47,12 +47,10 @@
                   <v-col cols="12">
                     <v-textarea
                       v-model="inquiry"
-                      box
                       label="Inquiry"
                       placeholder=" "
                       :rules="[rules.required]"
                       outlined
-                      required
                     ></v-textarea>
                   </v-col>
                   <v-col cols="12">
