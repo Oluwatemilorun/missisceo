@@ -33,7 +33,7 @@
       color="white"
       elevate-on-scroll
       tile
-      class="mx-lg-10"
+      class="px-lg-10"
     >
       <v-app-bar-nav-icon
         color="secondary"

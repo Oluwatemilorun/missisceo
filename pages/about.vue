@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Page title="About Me" />
+    <PageTitle title="About Me" />
 
     <v-sheet class="mb-2">
       <v-container>

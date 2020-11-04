@@ -26,6 +26,8 @@ export default {}
 .v-application .display-3,
 .v-application .display-2,
 .v-application .display-1,
+.v-application .text-lg-h4,
+.v-application .text-lg-h6,
 .v-application .headline,
 .v-application .title,
 .v-application .subtitle-1,

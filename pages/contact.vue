@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Page title="Contact Me" />
+    <PageTitle title="Contact Me" />
 
     <!-- Contact Form -->
     <v-sheet class="my-5">
