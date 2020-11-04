@@ -1,45 +1,41 @@
 <template>
   <div>
-    <Page title="blog" />
+    <PageTitle title="blog" />
 
     <v-container>
-      <v-toolbar
-        tile
-        class="menubar my-0 mx-10 mx-md-0 mx-lg-10"
-        elevation="0"
-        color="white"
-      >
-        <v-container class="mx-auto py-0">
-          <v-row align="center" justify="center">
-            <v-container v-if="!isMobile" class="text-center">
-              <span
-                v-for="(category, k) in categories"
-                :key="k"
-                class="hidden-sm-and-down"
+      <v-divider />
+      <v-toolbar dense flat class="d-flex justify-center">
+        <v-toolbar-items v-if="!isMobile">
+          <v-btn
+            v-for="(item, index) in categories"
+            :key="index"
+            text
+            class="text-capitalize"
+          >
+            {{ item }}
+          </v-btn>
+        </v-toolbar-items>
+        <v-toolbar-items v-else>
+          <v-menu offset-y rounded="lg">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn text class="text-capitalize" v-bind="attrs" v-on="on">
+                All categories
+                <v-icon right>mdi-menu-down</v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                v-for="(item, index) in categories"
+                :key="index"
+                link
               >
-                <v-btn text>
-                  {{ category }}
-                </v-btn>
-                <span v-show="k < categories.length - 1">|</span>
-              </span>
-            </v-container>
-
-            <v-menu v-else bottom left offset-y>
-              <template v-slot:activator="{ on }">
-                <v-btn text class="hidden-md-and-up mb-6" v-on="on">
-                  All Categories
-                  <v-icon right>mdi-menu-down</v-icon>
-                </v-btn>
-              </template>
-              <v-list>
-                <v-list-item v-for="(catg, g) in categories" :key="g" link>
-                  <v-list-item-title>{{ catg }}</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </v-row>
-        </v-container>
+                <v-list-item-title v-text="item" />
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-toolbar-items>
       </v-toolbar>
+      <v-divider />
     </v-container>
 
     <!-- Blog Posts -->
@@ -56,22 +52,20 @@
               lg="5"
             >
               <v-card flat tile class="mb-sm-10" :to="`/blog/${item.slug}`">
-                <v-img :src="item.hero" height="450" class="item-hero">
-                  <v-sheet
-                    color="rgba(255,255,255,0.8)"
-                    tile
-                    class="item-date d-inline-block py-2 px-4"
-                  >
+                <v-img :src="item.hero" height="450" class="item-hero pt-10">
+                  <span class="grey py-2 px-4 subtitle-2">
                     {{ item.date }}
-                  </v-sheet>
+                  </span>
                   <v-sheet
                     tile
                     color="rgba(255,255,255,0.8)"
                     class="px-2 py-5 item-title"
                   >
-                    <h2 class="text-center text-capitalize">
+                    <div
+                      class="text-center headline font-weight-bold text-capitalize"
+                    >
                       {{ item.title }}
-                    </h2>
+                    </div>
                   </v-sheet>
                   <template v-slot:placeholder>
                     <v-row align="center" justify="center" class="fill-height">
@@ -150,19 +144,8 @@ export default {
 </script>
 
 <style scoped>
-.menubar {
-  border-top: 1px solid #bcbcbc;
-  border-bottom: 1px solid #bcbcbc;
-}
-
 .item-hero {
   position: relative;
-}
-
-.item-date {
-  position: absolute;
-  top: 20px;
-  font-size: 14px;
 }
 
 .item-title {
