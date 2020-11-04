@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-sheet tile color="grey lighten-4" height="560">
-      <v-parallax dark src="/img/black_soap.png" height="560">
+      <v-parallax dark src="/img/books-2.png" height="560">
         <v-row align="center" justify="center">
           <v-col cols="12" class="text-center">
             <!--  -->
