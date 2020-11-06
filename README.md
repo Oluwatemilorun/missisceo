@@ -1,5 +1,7 @@
 # missisceo-web
 
+> Missisceo blog
+
 ## Build Setup
 
 ```bash
